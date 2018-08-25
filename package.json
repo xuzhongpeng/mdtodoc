@@ -1,0 +1,26 @@
+{
+  "name": "mdtodoc",
+  "version": "1.0.5",
+  "description": "",
+  "main": "./bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "markdown",
+    "change",
+    "document"
+  ],
+  "author": "xuzhongpeng",
+  "license": "ISC",
+  "bin": {
+    "mdtodoc": "./bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cheerio": "^1.0.0-rc.2",
+    "commander": "^2.17.1",
+    "fs-extra": "^7.0.0",
+    "marked": "^0.5.0"
+  }
+}
