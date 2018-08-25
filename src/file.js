@@ -2,7 +2,7 @@ const fs = require('fs')
 //异步拷贝
 module.exports = function copy(sourse, callback) {
     //异步读取
-    let target = 'style/' + sourse.split('/')[sourse.split('/').length - 1]
+    let target = sourse.split('/')[sourse.split('/').length - 2] +'/'+ sourse.split('/')[sourse.split('/').length - 1]
     console.log(target)
     fs.readFile(sourse, 'utf8', function (err, data) {
         if (err) {
