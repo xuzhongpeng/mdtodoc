@@ -1,7 +1,5 @@
 ---
 title: markdown转换成标准文档工具
-date: 2017-09-24 16:03:40
-tags: [hexo, githubpage,博客搭建]
 ---
 # 介绍
 
