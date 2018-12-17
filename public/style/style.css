@@ -234,7 +234,7 @@ pre {
   background-color: #e1daef;
   -webkit-font-smoothing: initial;
   -moz-osx-font-smoothing: initial;
-  
+
  /*  background: rgba(0,40,91,0.8); */
   margin: auto;
   padding: 0.35em 1.5em;
@@ -593,7 +593,7 @@ body.docs #nav {
   border-radius: 15px;
   margin-right: 10px;
   transition: border-color 0.2s ease;
-  background: #fff url("../images/search.png") 8px 5px no-repeat;
+  /*background: #fff url("../images/search.png") 8px 5px no-repeat;*/
   background-size: 20px;
   vertical-align: middle !important;
 }
@@ -631,14 +631,14 @@ body.docs #nav {
   height: 24px;
   top: 8px;
   left: 12px;
-  background: url("../images/menu.png") center center no-repeat;
+  /*background: url("../images/menu.png") center center no-repeat;*/
   background-size: 24px;
 }
 #mobile-bar .logo {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: url("../images/logo.png") center center no-repeat;
+  /*background: url("../images/logo.png") center center no-repeat;*/
   top: 5px;
   left: 50%;
   margin-left: -15px;
