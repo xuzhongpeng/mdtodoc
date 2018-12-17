@@ -76,7 +76,11 @@ module.exports = {
     getMultiFilesMenu,
     getSingleFileMenu,
     makeIdForHElement(html) {
-        var reg = new RegExp(/\<h.*\>(.*)\<\/h(.*)>/, "g");
+        let reg = new RegExp(/\<h.*\>(.*)\<\/h(.*)>/, "g");
         return html.replace(reg, `<h$2 id="$1">$1</h$2>`);
+    },
+    addHighlightJsClass(html) {
+        let reg = new RegExp(/\<code[^>]*\>/, "g");
+        return html.replace(reg, '<code class="hljs">');
     }
 };

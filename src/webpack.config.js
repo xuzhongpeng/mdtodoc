@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = function (template) {
     let config = {
@@ -33,7 +34,6 @@ module.exports = function (template) {
                         {
                             loader: 'css-loader',
                             options: {
-                                // modules: true
                             }
                         }
                     ]
@@ -56,7 +56,7 @@ module.exports = function (template) {
                 minify: {
                     removeComments: true,
                     collapseWhitespace: true,
-                    removeAttributeQuotes: true
+                    // removeAttributeQuotes: true
                     // more options:
                     // https://github.com/kangax/html-minifier#options-quick-reference
                 },
@@ -64,7 +64,13 @@ module.exports = function (template) {
                 chunksSortMode: 'dependency',
                 inlineSource: '.(js|css)$'
             }),
-            new HtmlWebpackInlineSourcePlugin()
+            new HtmlWebpackInlineSourcePlugin(),
+            new UglifyJsPlugin({
+                test: /\.js(\?.*)?$/i,
+                sourceMap: false,
+                cache: path.join(__dirname, '../tmp'),
+                extractComments: 'none'
+            })
         ]
     };
     return config;

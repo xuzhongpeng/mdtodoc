@@ -22,7 +22,7 @@ exports.run = function (type, name) {
                                 var html = makeH(marked(file.toString()));
                                 //console.log(html)
                                 let htmlName = name.replace('.md', '.html');
-                                fs.writeFile('./' + htmlName, htmlEdit(html), function (err) {
+                                fs.writeFile('./' + htmlName, htmlEdit.getMultiFilesMenu(html), function (err) {
                                     if (err) {
                                         console.log(err);
                                     } else {

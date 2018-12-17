@@ -1,0 +1,11 @@
+/*
+.language-javascript {
+    background-color: black;
+}
+.language-javascript:parent {
+    background-color: black;
+}
+*/
+code, pre {
+    background: #2b2b2b;
+}
