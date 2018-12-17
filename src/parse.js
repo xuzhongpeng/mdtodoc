@@ -40,9 +40,15 @@ function getMenu(allHtml) {
     }
     return arrayLi;
 }
-module.exports = function htmlEdit(allHtml) {
-    let title;
-    reg = new RegExp(/\<p\>title:(.*)\<\/p\>/, 'g');
+
+function getTitleFromComment(html) {
+    if(new RegExp(/<!--\s*sub-title:(.*)\s*-->/, 'g').test(html)) {
+        return RegExp.$1;
+    }
+    return null;
+}
+function getMultiFilesMenu(allHtml) {
+    let title, reg = new RegExp(/\<p\>title:(.*)\<\/p\>/, 'g');
     if(reg.test(allHtml)) {
         title = RegExp.$1;
         allHtml = allHtml.replace(reg, '');
@@ -54,4 +60,23 @@ module.exports = function htmlEdit(allHtml) {
     const $ = cheerio.load(addHtml);
     $('.content').append(allHtml);
     return $.html();
+}
+function getSingleFileMenu(allHtml) {
+    let title;
+    if(new RegExp(/<!--\s*sub-title:(.*)\s*-->/, 'g').test(allHtml)) {
+        title = RegExp.$1;
+    }
+    title = title || '目录';
+    let addHtml = HtmlTemplate.tree(getMenu(allHtml), title);
+    const $ = cheerio.load(addHtml);
+    $('.content').append(allHtml);
+    return $.html();
+}
+module.exports = {
+    getMultiFilesMenu,
+    getSingleFileMenu,
+    makeIdForHElement(html) {
+        var reg = new RegExp(/\<h.*\>(.*)\<\/h(.*)>/, "g");
+        return html.replace(reg, `<h$2 id="$1">$1</h$2>`);
+    }
 };
