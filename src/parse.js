@@ -1,7 +1,8 @@
 const cheerio = require('cheerio');
-const addli = require('./generateTree.js');
+const HtmlTemplate = require('./html-template.js');
 //获取并返回
-module.exports = function htmlEdit(allHtml) {
+
+function getMenu(allHtml) {
     let arrayLi = [];
     let lastIndex = 0;
     var reg = new RegExp(/\<h2.*\>(.*)\<\/h2>/, "g");
@@ -33,11 +34,13 @@ module.exports = function htmlEdit(allHtml) {
             }
             oo['title'] = child;
             arr.push(oo)
-
         }
         arrayLi[n]['child'] = arr;
         arr = [];
     }
+    return arrayLi;
+}
+module.exports = function htmlEdit(allHtml) {
     let title;
     reg = new RegExp(/\<p\>title:(.*)\<\/p\>/, 'g');
     if(reg.test(allHtml)) {
@@ -46,7 +49,9 @@ module.exports = function htmlEdit(allHtml) {
     } else if(new RegExp(/<!--\s*sub-title:(.*)\s*-->/, 'g').test(allHtml)) {
         title = RegExp.$1;
     }
-    const $ = cheerio.load(addli(arrayLi, title || '目录'));
+    title = title || '目录';
+    let addHtml = HtmlTemplate.staticResource() + HtmlTemplate.tree(getMenu(allHtml), title);
+    const $ = cheerio.load(addHtml);
     $('.content').append(allHtml);
     return $.html();
 };
