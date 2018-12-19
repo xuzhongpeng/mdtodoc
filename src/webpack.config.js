@@ -10,6 +10,7 @@ module.exports = function (template) {
             path: path.join(__dirname, '../tmp/'),
             filename: 'resource.js'
         },
+        context: path.join(__dirname, '..'),
         mode: 'development',
         // node: {
         // //     fs: "empty"

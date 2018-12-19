@@ -14,7 +14,7 @@
   "author": "xuzhongpeng",
   "license": "ISC",
   "bin": {
-    "mdtodoc": "./bin/index.js"
+    "mdtodoc": "./bin/mdtodoc.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",

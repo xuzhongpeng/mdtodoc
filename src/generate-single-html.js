@@ -5,8 +5,11 @@ const marked = require("./markdown-convert.js");
 const HtmlEditor = require('./parse.js');
 const SingleFileBuilder = require('./single-file-builder.js');
 
+const CurrentWorkingDirectory = process.cwd();
+// process.chdir(path.join(__dirname, ".."));
+
 exports.run = function (name) {
-    const pageFile = name;
+    const pageFile = path.join(CurrentWorkingDirectory, name);
     fs.pathExists(pageFile, (err, exists) => {
         if (exists) {
             if (pageFile.indexOf('.md') == -1) {
@@ -25,7 +28,7 @@ exports.run = function (name) {
                             } else {
                                 console.log(htmlName + ' template create success！');
                                 SingleFileBuilder(htmlName, ()=> {
-                                    fs.moveSync(path.join(__dirname, '../tmp/index.html'), path.join(process.cwd(), htmlName), { overwrite: true });
+                                    fs.moveSync(path.join(__dirname, '../tmp/index.html'), path.join(CurrentWorkingDirectory, htmlName), { overwrite: true });
                                     console.log('convert success!');
                                 });
                             }
