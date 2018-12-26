@@ -12,3 +12,4 @@ CVS
 npm-debug.log
 test/
 node_modules/
+.idea/
